@@ -1,10 +1,8 @@
-from dataclasses import dataclass
+def mostrar_menu():
 
+    print("\n=== RIEGO ÓPTIMO ===")
 
-@dataclass(frozen=True)
-class Tablon:
-    index: int
-    ts: int
-    tr: int
-    p: int
-    rp: int
+    print("1. Fuerza Bruta")
+    print("2. Voraz")
+    print("3. Programación Dinámica")
+    print("4. Salir")

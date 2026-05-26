@@ -1,36 +1,31 @@
-from itertools import permutations
-
 from src.models.finca import Finca
 from src.models.resultado import Resultado
 
 from src.utils.cost import calcular_costo
 
 
-def roFB(finca: Finca) -> Resultado:
+def roV(finca: Finca) -> Resultado:
 
-    ids = [
+    tablones_ordenados = sorted(
+        finca.tablones,
+        key=lambda t: (
+            t.ts - t.tr,
+            -t.p,
+            t.tr,
+        )
+    )
+
+    orden = [
         t.index
-        for t in finca.tablones
+        for t in tablones_ordenados
     ]
 
-    mejor_orden = None
-    mejor_costo = float("inf")
-
-    for perm in permutations(ids):
-
-        orden = list(perm)
-
-        costo = calcular_costo(
-            finca,
-            orden,
-        )
-
-        if costo < mejor_costo:
-
-            mejor_costo = costo
-            mejor_orden = orden
+    costo = calcular_costo(
+        finca,
+        orden,
+    )
 
     return Resultado(
-        orden=mejor_orden,
-        costo=mejor_costo,
+        orden=orden,
+        costo=costo,
     )
