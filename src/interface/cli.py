@@ -1,3 +1,4 @@
+from algorithms.programacion_dinamica import roPD
 from src.algorithms.fuerza_bruta import roFB
 from src.algorithms.voraz import roV
 
@@ -19,6 +20,7 @@ def iniciar_cli():
     print("\nSeleccione algoritmo:")
     print("1. Fuerza Bruta")
     print("2. Voraz")
+    print("3. Programación Dinámica") 
 
     opcion = input("> ")
 
@@ -27,6 +29,9 @@ def iniciar_cli():
 
     elif opcion == "2":
         resultado = roV(finca)
+        
+    elif opcion == "3":
+        resultado = roPD(finca)
 
     else:
         print("Opción inválida")
